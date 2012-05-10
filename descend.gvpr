@@ -1,0 +1,14 @@
+BEG_G 
+{
+    int child = 0;
+    $tvtype = TV_prepostfwd;
+    $tvroot = isNode( $G, "Lotty Spurrell" );
+}
+N {
+    if( $.name == "Lotty Spurrell" )
+        child = !child;
+
+    if( child )
+        $.color = "pink";
+}
+END_G { $O = $G }
