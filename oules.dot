@@ -481,6 +481,7 @@ digraph oules {
         "Ben Below";
         "Sasha Mckenna";
         "Tim Ledsam";
+        "James Marsden";
     } -> "Ellie 'Dorothy' Armstrong";
     {
         "Bryn Griffiths";
@@ -523,6 +524,7 @@ digraph oules {
     {
         "Emma Slattery";
         "Emma New";
+        "James Marsden";
     } -> "Alex Brinkman-Young";
     {
         "Asha Hartland";
@@ -540,4 +542,11 @@ digraph oules {
         "Marcus Garner-Hatcher";
         "Hannah Snell";
     } -> "Chris Webster";
+    {
+        "Tim Ledsam";
+        "Jenni Goodchild";
+    } -> "James Marsden";
+    {
+        "James Marsden";
+    } -> "Ele Grieveson";
 }
