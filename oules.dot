@@ -551,4 +551,8 @@ digraph oules {
         "Alex Merry";
         "Tom Little";
     } -> "Ele Grieveson";
+    {
+        "Emma New";
+        "Jenni Goodchild";
+    } -> "Alex Stutt";
 }
