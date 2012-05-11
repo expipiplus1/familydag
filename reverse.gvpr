@@ -1,0 +1,21 @@
+BEG_G
+{
+    // The graph we'll will witht the reversed edges
+    graph_t g = graph( $.name + " reversed", "D" );
+}
+N
+{
+    // Insert the node
+    clone( g, $ );
+}
+E
+{
+    node_t new_head = clone( g, $.head );
+    node_t new_tail = clone( g, $.tail );
+    edge_t new_edge = edge_sg( g, new_head, new_tail, "" );
+    copyA( $, new_edge );
+}
+END_G
+{
+    $O = g;
+}
