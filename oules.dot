@@ -524,7 +524,6 @@ digraph oules {
     {
         "Emma Slattery";
         "Emma New";
-        "James Marsden";
     } -> "Alex Brinkman-Young";
     {
         "Asha Hartland";
