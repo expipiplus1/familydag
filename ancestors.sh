@@ -18,5 +18,5 @@ gvpr -c "BEG_G{}
          BEG_G{ \$tvtype = TV_en; }              
          E[head.dist == -3.0 && tail.dist == -3.0]{delete(\$G,$);} // remove links between parents
          N[dist == -1.0]{delete(\$G,$);}         // Remove all the other nodes
-        " |
-dot -Gmclimit=1000.0 -Tpng -o"$CLEAN_NAME.png" # Render the png
+        " # |
+#dot -Gmclimit=1000.0 -Tpng -o"$CLEAN_NAME.png" # Render the png
