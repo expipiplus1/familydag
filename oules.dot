@@ -1,6 +1,6 @@
 digraph oules {
     size="1500,750"
-    node [color=lightblue2, style=filled]
+    node [color=lightblue2, style=filled, dist=-1]
     {
         "Emma New";
         "Lotty Spurrell";
@@ -209,6 +209,7 @@ digraph oules {
     {
         "Linnet ";
         "Noga Zyven";
+        "Richard Owen";
     } -> "Elizabeth Baldwin";
     {
         "Gam Cooray";
@@ -271,7 +272,7 @@ digraph oules {
         "Linnet ";
     } -> "Rhi ";
     {
-        "Richard ";
+        "Richard Owen";
         "Noga Zyven";
     } -> "Rose ";
     {
@@ -489,12 +490,12 @@ digraph oules {
     } -> "Bob Hunt";
     {
         "Ben Below";
-        "Alex 'Pippin' Merry";
+        "Alex Merry";
     } -> "Merlin Seller";
     {
         "Mike Bagshaw";
         "Jenni Goodchild";
-    } -> "Alex 'Pippin' Merry";
+    } -> "Alex Merry";
     {
         "Robert Collins";
         "Rachel Hughes";
@@ -534,7 +535,7 @@ digraph oules {
         "Emma New";
     } -> "Tim Skew";
     {
-        "Robert Collins";
+        "Peter Bunyan";
         "Rachel Hughes";
     } -> "Tom Hoare";
     {
