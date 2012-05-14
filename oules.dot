@@ -1,6 +1,6 @@
 digraph oules {
     size="1500,750";
-    node [color=lightblue2, style=filled, dist=-1];
+    node [color=lightblue2, style=filled];
     adam_robinson [ label="Adam Robinson" ];
     adrian_clayton [ label="Adrian Clayton" ];
     alex_brinkmanyoung [ label="Alex Brinkman-Young" ];

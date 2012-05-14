@@ -7,11 +7,13 @@ CLEAN_NAME=${CLEAN_NAME//[^a-zA-Z0-9_]/}
 # finally, lowercase with TR
 CLEAN_NAME=`echo -n $CLEAN_NAME | tr A-Z a-z`
 
-dijkstra "$1" -d        | # Compute the distance from the person to each of
+gvpr -c "N{dist=-1.0;}"   | # Set the default distance to -1.0
+dijkstra "$CLEAN_NAME" -d        | # Compute the distance from the person to each of
                           # their descendants
 gvpr -c "BEG_G{}
          E[head.dist == 0.0]{tail.dist = -4.0;}
             // Set the parents of the person to -4.0
+         N[dist == 0.0]{shape=\"box\";}
          BEG_G{}
          E[head.dist == 1.0 && tail.dist <= 0.0]{tail.dist = -3.0;}
             // Set the spouses to -3 if they're not already descendants
