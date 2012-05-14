@@ -7,5 +7,6 @@ CLEAN_NAME=${CLEAN_NAME//[^a-zA-Z0-9_]/}
 # finally, lowercase with TR
 CLEAN_NAME=`echo -n $CLEAN_NAME | tr A-Z a-z`
 
-cat <(./ancestors.sh "$1" < oules.dot) <(./descendants.sh "$1" < oules.dot) | gvpr -f merge.gvpr
+( tee >(./descendants.sh "$CLEAN_NAME") >(./ancestors.sh "$CLEAN_NAME") > /dev/null ) | 
+gvpr -f merge.gvpr
 
