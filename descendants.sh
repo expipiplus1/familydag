@@ -22,6 +22,6 @@ gvpr -c "BEG_G{}
             // Remove all the other nodes
          BEG_G{graph_t s = subg(\$G, \"spouses\"); s.rank=\"same\";} 
             // put all of the spouses who aren't descendants into the same rank
-         N[dist == -3.0]{ clone(s,$); }
+         N[dist == -3.0]{subnode(s,$);}
         " #|
 #dot -Gmclimit=10000.0 -Tpng -o"$CLEAN_NAME.png" # Render the png
