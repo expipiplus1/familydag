@@ -43,6 +43,7 @@ digraph oules {
     dom_mattos [ label="Dom Mattos" ];
     duncan_coutts [ label="Duncan Coutts" ];
     edward_shaw [ label="Edward Shaw" ];
+    efi_gauthier [ label="Efi Gauthier" ];
     eilise_norris [ label="Eilise Norris" ];
     ele_grieveson [ label="Ele Grieveson" ];
     elena_harty [label="Elena Harty" ];
@@ -899,5 +900,9 @@ digraph oules {
         beca_nightingale;
     } -> sam_hilton;
 
+    {
+        joe_hermaszewski;
+        bryn_griffiths;
+    } -> efi_gauthier;
     
 }
