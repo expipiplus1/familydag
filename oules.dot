@@ -31,6 +31,8 @@ digraph oules {
     cath_howdle [ label="Cath Howdle" ];
     charlotte_hindley [ label="Charlotte Hindley" ];
     chris_webster [ label="Chris Webster" ];
+    christina_luk [ label="Christina Luk" ];
+    claire_mead [ label="Claire Mead" ];
     claire_s [ label="Claire S" ];
     claire_wilkinson [ label="Claire Wilkinson" ];
     clare_tubervil [ label="Clare Tubervil" ];
@@ -43,6 +45,7 @@ digraph oules {
     edward_shaw [ label="Edward Shaw" ];
     eilise_norris [ label="Eilise Norris" ];
     ele_grieveson [ label="Ele Grieveson" ];
+    elena_harty [label="Elena Harty" ];
     elizabeth_baldwin [ label="Elizabeth Baldwin" ];
     elizabeth_shanahan [ label="Elizabeth Shanahan" ];
     ellie_armstrong [ label="Ellie Armstrong" ];
@@ -56,6 +59,7 @@ digraph oules {
     frances_watson [ label="Frances Watson" ];
     gam_cooray [ label="Gam Cooray" ];
     gareth_smith [ label="Gareth Smith" ];
+    graham_rogers [ label="Graham Rogers" ];
     hannah [ label="Hannah" ];
     hannah_mycock [ label="Hannah Mycock" ];
     hannah_snell [ label="Hannah Snell" ];
@@ -83,9 +87,9 @@ digraph oules {
     jon_folds [ label="Jon Folds" ];
     jon_lipscombe [ label="Jon Lipscombe" ];
     jonny_sims [ label="Jonny Sims" ];
-    julia [ label="Julia" ];
+    julia_palmer [ label="Julia Palmer" ];
     kate_morris [ label="Kate Morris" ];
-    katherine [ label="Katherine" ];
+    katherine_oliver [ label="Katherine Oliver" ];
     kathryn [ label="Kathryn" ];
     katy_willett [ label="Katy Willett" ];
     kirsty [ label="Kirsty" ];
@@ -456,15 +460,17 @@ digraph oules {
     
     {
         elizabeth_baldwin;
-    } -> julia;
+    } -> julia_palmer;
     
     {
         elizabeth_baldwin;
         harry_ullman;
-    } -> katherine;
+    } -> katherine_oliver;
     
     {
         elizabeth_baldwin;
+        mariel_harrison;
+        emma_new;
     } -> miles_coverdale;
     
     {
@@ -733,6 +739,7 @@ digraph oules {
     {
         alice_young;
         katy_willett;
+        sam_swinnerton;
     } -> sam_young;
     
     {
@@ -822,6 +829,7 @@ digraph oules {
     {
         emma_slattery;
         emma_new;
+        james_marsden;
     } -> alex_brinkmanyoung;
     
     {
@@ -864,4 +872,32 @@ digraph oules {
         joe_hermaszewski;
         martin_corcoran;
     } -> britney_derosa;
+
+    {
+        asha_hartland;
+        perry_asbury;
+        tim_ledsam;
+        ben_below;
+    } -> elena_harty;
+
+    {
+        joe_hermaszewski;
+        beca_nightingale;
+    } -> christina_luk;
+
+    {
+        ben_below;
+        edward_shaw;
+    } -> claire_mead;
+
+    {
+        ben_below;
+        edward_shaw;
+    } -> graham_rogers;
+
+    {
+        beca_nightingale;
+    } -> sam_hilton;
+
+    
 }
