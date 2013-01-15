@@ -8,7 +8,7 @@ CLEAN_NAME=${CLEAN_NAME//[^a-zA-Z0-9_]/}
 CLEAN_NAME=`echo -n $CLEAN_NAME | tr A-Z a-z`
 
 gvpr -c "N{dist=-1.0;}"   | # Set the default distance to -1.0
-dijkstra "$CLEAN_NAME" -d        | # Compute the distance from the person to each of
+dijkstra -d "$CLEAN_NAME" | # Compute the distance from the person to each of
                           # their descendants
 gvpr -c "BEG_G{}
          E[head.dist == 0.0]{tail.dist = -4.0;}

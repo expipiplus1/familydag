@@ -9,8 +9,8 @@ CLEAN_NAME=`echo -n $CLEAN_NAME | tr A-Z a-z`
 
 gvpr -f reverse.gvpr        | # Reverse the links reading from stdin
 gvpr -c "N{dist = -1.0;}"   | # Set the default dist to -1.0
-dijkstra "$CLEAN_NAME" -d        | # Compute the distance from the person to each of
-                          # their ancestors
+dijkstra -d "$CLEAN_NAME"   | # Compute the distance from the person to each of
+                              # their ancestors
 gvpr -f reverse.gvpr    |
 gvpr -c "BEG_G{}
          E[tail.dist == 0.0]{head.dist = -2.0;}  
