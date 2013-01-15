@@ -25,7 +25,7 @@ digraph oules {
     bob_hunt [ label="Bob Hunt" ];
     britney_derosa [ label="Britney DeRosa" ];
     bryn_griffiths [ label="Bryn Griffiths" ];
-    callum [ label="Callum" ];
+    callum_docherty [ label="Callum Docherty" ];
     cass_mchugh [ label="Cass McHugh" ];
     catherine_offord [ label="Catherine Offord" ];
     cath_howdle [ label="Cath Howdle" ];
@@ -91,7 +91,7 @@ digraph oules {
     julia_palmer [ label="Julia Palmer" ];
     kate_morris [ label="Kate Morris" ];
     katherine_oliver [ label="Katherine Oliver" ];
-    kathryn [ label="Kathryn" ];
+    kathryn_brooks [ label="Kathryn Brooks" ];
     katy_willett [ label="Katy Willett" ];
     kirsty [ label="Kirsty" ];
     kit [ label="Kit" ];
@@ -167,6 +167,7 @@ digraph oules {
     tom_woolley [ label="Tom Woolley" ];
     tzveta_pokrovska [ label="Tzveta Pokrovska" ];
     will_minter [ label="Will Minter" ];
+    will_smith [ label="Will Smith" ];
 
     {
         emma_new;
@@ -248,12 +249,12 @@ digraph oules {
         lotty_spurrell;
         robyn_hughes;
         becky_ely;
-    } -> callum;
+    } -> callum_docherty;
     
     {
         rory_morrison;
         lotty_spurrell;
-    } -> kathryn;
+    } -> kathryn_brooks;
     
     {
         tom_woolley;
@@ -905,4 +906,9 @@ digraph oules {
         bryn_griffiths;
     } -> efi_gauthier;
     
+    {
+        hannah_snell;
+        mike_bagshaw;
+        matthew_williams;
+    } -> will_smith;
 }
