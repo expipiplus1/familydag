@@ -1,7 +1,8 @@
 BEGIN{
     //
-    // This code is so horrible because all variables seem to have a global scope,
-    // because of this, there is no stack, so no useful recursion of any kind
+    // This code is so horrible because in this farce of a language all variables 
+    // seem to have a global scope, because of this, there is no stack, so no 
+    // useful recursion of any kind
     //
 
     //
