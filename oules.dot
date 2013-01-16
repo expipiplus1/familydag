@@ -196,7 +196,7 @@ digraph oules {
     
     {
         tom_reynolds;
-        katherine;
+        katherine_oliver;
     } -> helen_nightingale;
     
     {
