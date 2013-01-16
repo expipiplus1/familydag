@@ -70,6 +70,12 @@ BEGIN{
         AverageColors_theta = atan2(AverageColors_y, AverageColors_x);
         AverageColors_theta /= 2 * atan2(0,-1);
         AverageColors_theta += 0.5;
+        /*AverageColors_theta += (rand()-0.5)/6;
+        if( AverageColors_theta > 1.0 )
+            AverageColors_theta -= 1.0;
+        else if (AverageColors_theta < 0.0 )
+            AverageColors_theta += 1.0;
+            */
         
         return sprintf( "%f 0.7 1.0", AverageColors_theta );
     }
@@ -203,6 +209,12 @@ BEG_G {
 }
 N {
     SetColor( $ );
+}
+
+BEG_G {
+}
+E {
+    color = tail.color;
 }
 
 END_G { 
