@@ -211,7 +211,7 @@ N [name == "joe_hermaszewski"] {
     //
     // Winner's red
     //
-    color = "#ff1337";
+    color = colorx( "#ff1337", "HSV" );
 }
 
 BEG_G { 
