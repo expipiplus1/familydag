@@ -27,6 +27,7 @@ BEGIN{
     // An array of colors to populate and average from parents
     //
     string colors[int];
+    double weights[int];
     int colors_size;
 
     //
@@ -38,11 +39,13 @@ BEGIN{
         PopulateColors_e = fstin(PopulateColors_n);
         colors_size = 0;
         unset( colors );
+        unset( weights );
         while( PopulateColors_e != NULL )
         {
             node_t PopulateColors_m;
             PopulateColors_m = PopulateColors_e.tail;
             colors[colors_size] = PopulateColors_m.color;
+            weights[colors_size] = 1.0 / (double)PopulateColors_m.outdegree;
             PopulateColors_e = nxtin(PopulateColors_e);
             colors_size += 1;
         }
@@ -63,8 +66,8 @@ BEGIN{
             sscanf( colors[AverageColors_i], "%f", &AverageColors_theta );
             AverageColors_theta -= 0.5;
             AverageColors_theta *= 2 * atan2(0,-1);
-            AverageColors_x += cos(AverageColors_theta);
-            AverageColors_y += sin(AverageColors_theta);
+            AverageColors_x += cos(AverageColors_theta) * weights[AverageColors_i];
+            AverageColors_y += sin(AverageColors_theta) * weights[AverageColors_i];
         }
 
 
