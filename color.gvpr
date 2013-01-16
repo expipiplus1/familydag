@@ -122,9 +122,9 @@ BEGIN{
     void SetColor( node_t first )
     {
         //
-        // If this is a root node, skip it
+        // If we already have a color skip this node
         //
-        if( first.indegree == 0.0 )
+        if( first.color != "" )
             return;
 
         edge_t e;
@@ -205,13 +205,22 @@ N {
         color = "";
 }
 
+BEG_G {
+}
+N [name == "joe_hermaszewski"] {
+    //
+    // Winner's red
+    //
+    color = "#ff1337";
+}
+
 BEG_G { 
 }
 N {
     SetColor( $ );
 }
 
-BEG_G {
+BEG_G{
 }
 E {
     color = tail.color;
