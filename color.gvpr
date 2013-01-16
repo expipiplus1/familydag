@@ -1,0 +1,210 @@
+BEGIN{
+    //
+    // This code is so horrible because all variables seem to have a global scope,
+    // because of this, there is no stack, so no useful recursion of any kind
+    //
+
+    //
+    // The number of nodes with no ancestors
+    // and an index for stepping through them
+    //
+    int head_count = 0;
+    int head_index = 0;
+    
+    //
+    // This returns the next seed color for a starting node
+    //
+    string SeedColor()
+    {
+        head_index += 1;
+        string seed_color;
+        seed_color = (string)((double)head_index / (double)head_count) + " 0.7 1.0";
+        return seed_color;
+    }
+
+    //
+    // An array of colors to populate and average from parents
+    //
+    string colors[int];
+    int colors_size;
+
+    //
+    // This steps through all the parents of the node and fills colors with their colors
+    //
+    void PopulateColors( node_t PopulateColors_n )
+    {
+        edge_t PopulateColors_e;
+        PopulateColors_e = fstin(PopulateColors_n);
+        colors_size = 0;
+        unset( colors );
+        while( PopulateColors_e != NULL )
+        {
+            node_t PopulateColors_m;
+            PopulateColors_m = PopulateColors_e.tail;
+            colors[colors_size] = PopulateColors_m.color;
+            PopulateColors_e = nxtin(PopulateColors_e);
+            colors_size += 1;
+        }
+    }
+
+    //
+    // This averages the hue of all the colors in colors
+    //
+    string AverageColors()
+    {
+        double AverageColors_x = 0;
+        double AverageColors_y = 0;
+        double AverageColors_theta;
+
+        int AverageColors_i;
+        for( colors[AverageColors_i] )
+        {
+            sscanf( colors[AverageColors_i], "%f", &AverageColors_theta );
+            AverageColors_theta -= 0.5;
+            AverageColors_theta *= 2 * atan2(0,-1);
+            AverageColors_x += cos(AverageColors_theta);
+            AverageColors_y += sin(AverageColors_theta);
+        }
+
+
+        AverageColors_theta = atan2(AverageColors_y, AverageColors_x);
+        AverageColors_theta /= 2 * atan2(0,-1);
+        AverageColors_theta += 0.5;
+        
+        return sprintf( "%f 0.7 1.0", AverageColors_theta );
+    }
+
+    //
+    // This array holds the next edge to explore from a particular node or NULL
+    //
+    edge_t node_next_edge[node_t];
+
+    //
+    // This will return the next unexplored edge for a particular node
+    //
+    edge_t GetEdge( node_t GetEdge_n )
+    {
+        if( node_next_edge[GetEdge_n] == NULL )
+            return NULL;
+        edge_t GetEdge_temp;
+        GetEdge_temp = node_next_edge[GetEdge_n];
+        node_next_edge[GetEdge_n] = nxtin( GetEdge_temp );
+        return GetEdge_temp;
+    }
+
+    //
+    // This will reset the explored edges for a particular node
+    //
+    void ResetEdge( node_t ResetEdge_n )
+    {
+        //
+        // If this isn't a head node, initialize the next parent node array
+        //
+        if( ResetEdge_n.indegree != 0.0 )
+            node_next_edge[ResetEdge_n] = fstin(ResetEdge_n);
+    }
+
+    //
+    // For some unknown reason I can't declare this in a function scope
+    //
+    node_t ancestors[int];
+
+    //
+    // The main useful function, this sets the color for a node and while it's
+    // at it sets the color for all the ancestors
+    //
+    void SetColor( node_t first )
+    {
+        //
+        // If this is a root node, skip it
+        //
+        if( first.indegree == 0.0 )
+            return;
+
+        edge_t e;
+        node_t n;
+
+        //
+        // Ancestors contains all the nodes above this one
+        //
+        int position = -1;
+        int num_ancestors = 0;
+        unset( ancestors );
+        ancestors[-1] = first;
+        
+        while( num_ancestors > position )
+        {
+            n = ancestors[position];
+
+            e = GetEdge( n );
+            while( e != NULL )
+            {
+                node_t t;
+                t = e.tail;
+                if( t.color == "" )
+                {
+                    ancestors[num_ancestors] = t;
+                    num_ancestors += 1;
+                }
+                e = GetEdge( n );
+            }
+            ResetEdge( n );
+            
+            position += 1;
+        }
+
+        //
+        // Traverse ancestors backwards, starting from the top of the graph
+        //
+        int i;
+        forr( ancestors[i] )
+        {
+
+            //
+            // It's possible (almost certain given the amount of incest) that
+            // we've seen this ancestor before through some other path, if we
+            // have then just skip them
+            //
+            if( ancestors[i].color != "" )
+                continue;
+
+            //
+            // Grab the colors of the parents and average them
+            //
+            PopulateColors( ancestors[i] );
+            ancestors[i].color = AverageColors();
+        }
+    }
+}
+
+BEG_G {
+}
+N {
+    if( indegree == 0.0 )
+        head_count += 1;
+}
+N {
+    ResetEdge( $ );
+}
+
+BEG_G { 
+}
+N {
+    //
+    // Initialize all the root colors
+    //
+    if( indegree == 0.0 )
+       color = SeedColor();
+    else
+        color = "";
+}
+
+BEG_G { 
+}
+N {
+    SetColor( $ );
+}
+
+END_G { 
+    $O = $G; 
+}
