@@ -138,7 +138,6 @@ digraph oules {
     rob_m [ label="Rob M" ];
     robyn_hughes [ label="Robyn Hughes" ];
     rory_morrison [ label="Rory Morrison" ];
-    rosalyn_beckwith [ label="Rosalyn Beckwith" ];
     rosalyn_shih [ label="Rosalyn Shih" ];
     rose [ label="Rose" ];
     rui_ramalho [ label="Rui Ramalho" ];
@@ -833,7 +832,7 @@ digraph oules {
     } -> anahita_hoose;
     
     {
-        rosalyn_beckwith;
+        rhoslyn_beckwith;
         sasha_mckenna;
         perry_asbury;
     } -> emma_slattery;
@@ -894,7 +893,7 @@ digraph oules {
     } -> elena_harty;
 
     {
-        joe_hermaszewski;
+        beca_nightingale;
         sam_young;
     } -> christina_luk;
 
