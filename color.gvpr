@@ -24,6 +24,75 @@ BEGIN{
     }
 
     //
+    // All the nodes that we want to distribute colors for when we run SpaceColors
+    //
+    int nodes_to_space_size;
+    node_t nodes_to_space[int];
+
+    //
+    // The color ordering stores all nodes's hue value for sorting
+    //
+    int color_ordering_size;
+    node_t color_ordering[double];
+
+    //
+    // color_duplicates[n] points to a node which should end up with the same color as n
+    //
+    int color_duplicates_size;
+    node_t color_duplicates[node_t];
+
+    void SpaceColors()
+    {
+        //
+        // iterate over all the nodes to sort by hue
+        //
+        int SpaceColors_i;
+        for( nodes_to_space[SpaceColors_i] )
+        {
+            node_t SpaceColors_o;
+            SpaceColors_o = nodes_to_space[SpaceColors_i];
+
+            //
+            // Get the hue
+            //
+            double SpaceColors_hue;
+            sscanf( SpaceColors_o.color, "%f", &SpaceColors_hue );
+            if( color_ordering[SpaceColors_hue] != NULL )
+            {
+                color_duplicates[SpaceColors_o] = color_ordering[SpaceColors_hue];
+                color_duplicates_size += 1;
+            }
+            else
+            {
+                color_ordering[SpaceColors_hue] = SpaceColors_o;
+                color_ordering_size += 1;
+            }
+        }
+
+        //
+        // iterate through the nodes in order and assign them colors
+        //
+        head_count = color_ordering_size;
+        head_index = 0;
+
+        for( color_ordering[SpaceColors_hue] )
+        {
+            node_t SpaceColors_n;
+            SpaceColors_n = color_ordering[SpaceColors_hue];
+            SpaceColors_n.color = SeedColor();
+        }
+
+        //
+        // iterate over all the duplicates
+        //
+        node_t SpaceColors_m;
+        for( color_duplicates[SpaceColors_m] )
+        {
+            SpaceColors_m.color = color_duplicates[SpaceColors_m].color;
+        }
+    }
+
+    //
     // An array of colors to populate and average from parents
     //
     string colors[int];
@@ -183,75 +252,11 @@ BEGIN{
             //
             PopulateColors( ancestors[i] );
             ancestors[i].color = AverageColors();
-        }
-    }
 
-    //
-    // All the nodes that we want to distribute colors for when we run SpaceColors
-    //
-    int nodes_to_space_size;
-    node_t nodes_to_space[int];
+            nodes_to_space[nodes_to_space_size] = ancestors[i];
+            nodes_to_space_size += 1;
 
-    //
-    // The color ordering stores all nodes's hue value for sorting
-    //
-    int color_ordering_size;
-    node_t color_ordering[double];
-
-    //
-    // color_duplicates[n] points to a node which should end up with the same color as n
-    //
-    int color_duplicates_size;
-    node_t color_duplicates[node_t];
-
-    void SpaceColors()
-    {
-        //
-        // iterate over all the nodes to sort by hue
-        //
-        int SpaceColors_i;
-        for( nodes_to_space[SpaceColors_i] )
-        {
-            node_t SpaceColors_o;
-            SpaceColors_o = nodes_to_space[SpaceColors_i];
-
-            //
-            // Get the hue
-            //
-            double SpaceColors_hue;
-            sscanf( SpaceColors_o.color, "%f", &SpaceColors_hue );
-            if( color_ordering[SpaceColors_hue] != NULL )
-            {
-                color_duplicates[SpaceColors_o] = color_ordering[SpaceColors_hue];
-                color_duplicates_size += 1;
-            }
-            else
-            {
-                color_ordering[SpaceColors_hue] = SpaceColors_o;
-                color_ordering_size += 1;
-            }
-        }
-
-        //
-        // iterate through the nodes in order and assign them colors
-        //
-        head_count = color_ordering_size;
-        head_index = 0;
-
-        for( color_ordering[SpaceColors_hue] )
-        {
-            node_t SpaceColors_n;
-            SpaceColors_n = color_ordering[SpaceColors_hue];
-            SpaceColors_n.color = SeedColor();
-        }
-
-        //
-        // iterate over all the duplicates
-        //
-        node_t SpaceColors_m;
-        for( color_duplicates[SpaceColors_m] )
-        {
-            SpaceColors_m.color = color_duplicates[SpaceColors_m].color;
+            SpaceColors();
         }
     }
 }
@@ -288,24 +293,24 @@ N [name == "joe_hermaszewski"] {
 }
 
 BEG_G { 
-}
-N {
-    SetColor( $ );
-}
-
-BEG_G {
     color_duplicates_size = 0;
     color_ordering_size = 0;
     nodes_to_space_size = 0;
 }
 N {
-    nodes_to_space[nodes_to_space_size] = $;
-    nodes_to_space_size += 1;
+    SetColor( $ );
 }
 
-BEG_G {
-    SpaceColors();
-}
+//BEG_G {
+//}
+//N {
+    //nodes_to_space[nodes_to_space_size] = $;
+    //nodes_to_space_size += 1;
+//}
+
+//BEG_G {
+    //SpaceColors();
+//}
 
 BEG_G{
 }
